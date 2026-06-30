@@ -13,6 +13,10 @@ export interface SiteContent {
   experience: ExperienceProps[];
   projects: ProjectProps[];
   about: AboutProps;
+  education: EducationProps[];
+  manuscripts: ManuscriptProps[];
+  skills: SkillGroupProps[];
+  awards: AwardProps[];
 }
 
 export interface HeroProps {
@@ -28,6 +32,7 @@ export interface ExperienceProps {
   startDate: string;
   endDate: string;
   summary: string | string[];
+  type?: "research" | "industry" | "teaching";
 }
 
 export interface ProjectProps {
@@ -36,6 +41,7 @@ export interface ProjectProps {
   image: string;
   linkPreview?: string;
   linkSource?: string;
+  tech: string[];
 }
 
 export interface AboutProps {
@@ -47,3 +53,31 @@ export interface HeaderProps {
   siteLogo: string;
   navLinks: { text: string; href: string }[];
 }
+
+export interface SkillGroupProps {
+  category: string;
+  items: string[];
+}
+
+export interface ManuscriptProps {
+  title: string;
+  status: string;
+  institution: string;
+  year: string;
+  summary: string[];
+}
+
+export interface EducationProps {
+  institution: string;
+  degree: string;
+  cgpa: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+}
+
+export interface AwardProps {
+  title: string;
+  details?: string;
+}
+

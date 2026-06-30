@@ -1,0 +1,49 @@
+---
+import Section from "./Section.astro";
+import type { AwardProps } from "@types";
+
+interface Props {
+  awards: AwardProps[];
+}
+
+const { awards } = Astro.props;
+---
+
+<Section text="Honors & Awards" href="awards">
+  <div class="grid gap-6 sm:grid-cols-2">
+    {
+      awards.map(({ title, details }) => (
+        <div class="flex gap-4 p-5 rounded-2xl border border-slate-200/60 bg-[#ffffff] shadow-sm hover:border-primary/30 hover:shadow-md transition-all duration-300">
+          <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary">
+            {/* Trophy Icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-award"
+            >
+              <circle cx="12" cy="8" r="7" />
+              <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-bold text-white leading-snug">
+              {title}
+            </h3>
+            {details && (
+              <p class="text-sm text-neutral mt-1.5 leading-relaxed">
+                {details}
+              </p>
+            )}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Section>

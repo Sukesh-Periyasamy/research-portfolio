@@ -1,0 +1,45 @@
+---
+import Section from "./Section.astro";
+import type { EducationProps } from "@types";
+
+interface Props {
+  education: EducationProps[];
+}
+
+const { education } = Astro.props;
+---
+
+<Section text="Education" href="education">
+  <div class="relative border-l border-white/10 pl-6 ml-4 space-y-12">
+    {
+      education.map(({ institution, degree, cgpa, location, startDate, endDate }) => (
+        <div class="relative group">
+          {/* Timeline Dot */}
+          <div class="absolute -left-[31px] top-1.5 h-4 w-4 rounded-full border-2 border-primary bg-black transition-all duration-300 group-hover:bg-primary group-hover:scale-125" />
+          
+          <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-2">
+            <div>
+              <h3 class="font-serif text-2xl font-semibold text-white group-hover:text-primary transition-colors duration-300">
+                {institution}
+              </h3>
+              <p class="text-lg text-primary/90 font-medium mt-1">
+                {degree}
+              </p>
+              <span class="inline-block bg-white/5 border border-white/10 rounded-md px-2 py-0.5 text-xs text-neutral mt-2">
+                {cgpa}
+              </span>
+            </div>
+            <div class="text-left md:text-right shrink-0">
+              <span class="text-sm font-medium text-neutral">
+                {startDate} — {endDate}
+              </span>
+              <p class="text-xs text-neutral/70 mt-1">
+                {location}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Section>

@@ -2,16 +2,24 @@
 import { SITE_CONTENT } from "@config";
 import Hero from "@components/Hero.astro";
 import Layout from "@layouts/Layout.astro";
-import Experience from "@components/Experience.astro";
-import Projects from "@components/Projects.astro";
 import About from "@components/About.astro";
+import Skills from "@components/Skills.astro";
+import Experience from "@components/Experience.astro";
+import Manuscripts from "@components/Manuscripts.astro";
+import Projects from "@components/Projects.astro";
+import Education from "@components/Education.astro";
+import Awards from "@components/Awards.astro";
 
 import "../styles/global.css";
 ---
 
 <Layout>
   <Hero {...SITE_CONTENT.hero} />
-  <Experience experience={SITE_CONTENT.experience} />
-  <Projects projects={SITE_CONTENT.projects} />
   <About {...SITE_CONTENT.about} name={SITE_CONTENT.hero.name} />
+  <Skills skills={SITE_CONTENT.skills} />
+  <Experience experience={SITE_CONTENT.experience} />
+  <Manuscripts manuscripts={SITE_CONTENT.manuscripts} />
+  <Projects projects={SITE_CONTENT.projects} />
+  <Education education={SITE_CONTENT.education} />
+  <Awards awards={SITE_CONTENT.awards} />
 </Layout>

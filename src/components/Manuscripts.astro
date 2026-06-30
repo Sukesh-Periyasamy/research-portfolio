@@ -1,0 +1,42 @@
+---
+import Section from "./Section.astro";
+import type { ManuscriptProps } from "@types";
+
+interface Props {
+  manuscripts: ManuscriptProps[];
+}
+
+const { manuscripts } = Astro.props;
+---
+
+<Section text="Publications & Manuscripts" href="manuscripts">
+  <div class="space-y-8">
+    {
+      manuscripts.map(({ title, status, institution, year, summary }) => (
+        <div class="group relative rounded-2xl border border-slate-200/60 bg-[#ffffff] p-6 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md">
+          <div class="flex flex-wrap items-start justify-between gap-4 mb-4">
+            <div>
+              <span class="inline-block rounded-full bg-primary/10 border border-primary/25 px-3 py-1 text-xs font-semibold tracking-wide text-primary uppercase mb-2">
+                {status}
+              </span>
+              <h3 class="font-serif text-2xl font-bold text-white group-hover:text-primary transition-colors duration-300">
+                {title}
+              </h3>
+            </div>
+            <span class="text-sm text-neutral shrink-0">
+              {institution} • {year}
+            </span>
+          </div>
+          
+          <ul class="list-none space-y-3">
+            {summary.map((point) => (
+              <li class="relative pl-7 text-neutral text-base leading-relaxed before:absolute before:left-0 before:top-[6px] before:h-2 before:w-2 before:rounded-full before:bg-primary/50">
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</Section>
